@@ -1,0 +1,24 @@
+management:
+  endpoint:
+    shutdown:
+      enabled: true # 서버 종료 shutdown 활성화 (/shutdown endpoint 들어가면 종료가능)
+    health:
+      show-details: always # 헬스 정보를 자세하게 알기 위해
+  info: # 어플리케이션 정보 추가 (하위설정은 자바와 os)
+    java:
+      enabled: true
+    os:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 모든 엔드포인트를 웹에 노출
+
+logging:
+  level:
+    hello.controller: debug # 헬로 컨트롤러의 하위 친구들의 로그 정보는, 디버그부터 보여줘잉!
+
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true # 프로메테우스에서 톰캣 정보도 수집할거라서 추가! (mbean - 모니터링과 관리를 위해 노출되는 관리 빈)
